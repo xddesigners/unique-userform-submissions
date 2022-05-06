@@ -6,4 +6,8 @@ The email adres is validated by sending an email to the user asking to validate 
 
 ## Installation
 
-Install the module trough composer `composer require xddesigners/unique-userform-submissions`
+Install the module trough composer
+
+```sh
+composer require xddesigners/unique-userform-submissions
+```
