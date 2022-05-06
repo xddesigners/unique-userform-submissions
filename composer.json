@@ -1,0 +1,21 @@
+{
+  "name": "xddesigners/unique-userform-submissions",
+  "description": "Add an unique email field to your userforms form.",
+  "type": "silverstripe-vendormodule",
+  "keywords": ["silverstripe", "event", "calendar"],
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Bram de Leeuw",
+      "email": "bram@xd.nl"
+    }
+  ],
+  "require": {
+    "silverstripe/cms": "^4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "XD\\UniqueUserFormSubmissions\\": "src"
+    }
+  }
+}

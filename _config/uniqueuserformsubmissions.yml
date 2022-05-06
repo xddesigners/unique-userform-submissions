@@ -1,0 +1,13 @@
+---
+name: 'uniqueuserformsubmissions'
+After:
+  - '#rootroutes'
+  - '#coreroutes'
+---
+SilverStripe\Control\Director:
+  rules:
+    'uufs/$Token!': 'XD\UniqueUserFormSubmissions\Controller\ConfirmSubmittedFormController'
+
+SilverStripe\UserForms\Model\Submission\SubmittedForm:
+  extensions:
+    - XD\UniqueUserFormSubmissions\Extension\UniqueSubmittedForm
