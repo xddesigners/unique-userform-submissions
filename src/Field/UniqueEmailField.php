@@ -2,17 +2,27 @@
 
 namespace XD\UniqueUserFormSubmissions\Field;
 
+use SilverStripe\Control\Controller;
 use SilverStripe\Forms\EmailField;
+use SilverStripe\UserForms\Model\Submission\SubmittedForm;
 use SilverStripe\UserForms\Model\Submission\SubmittedFormField;
 
 class UniqueEmailField extends EmailField
 {
     public function validate($validator)
     {
-        $alreaddySubmitted = SubmittedFormField::get()->filter([
-            'Name' => $this->Name,
-            'Value' => $this->value
-        ])->count();
+        /** @var SubmittedForm $parent */
+        $controller = Controller::curr();
+        $parentID = $controller->ID;
+        $parentClass = $controller->ClassName;
+
+        $alreaddySubmitted = SubmittedFormField::get()
+            ->filter([
+                'Name' => $this->Name,
+                'Value' => $this->value,
+                'Parent.ParentID' => $parentID,
+                'Parent.ParentClass' => $parentClass,
+            ])->count();
 
         if ($alreaddySubmitted) {
             $validator->validationError(
